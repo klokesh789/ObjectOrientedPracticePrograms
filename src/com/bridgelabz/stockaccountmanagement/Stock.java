@@ -16,5 +16,17 @@ public class Stock {
     public String toString() {
         return "Stock [shareName=" +shareName + ", noOfShare=" + noOfShare + ", sharePrice=" + sharePrice + "]";
     }
+	public int getSharePrice() {
+		// TODO Auto-generated method stub
+		return sharePrice;
+	}
+	public int getNoOfShare() {
+		// TODO Auto-generated method stub
+		return noOfShare;
+	}
+	public String getShareName() {
+		// TODO Auto-generated method stub
+		return shareName;
+	}
 
 }

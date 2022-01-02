@@ -4,50 +4,42 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 public class StockMain {
-	static int noOfStocks;
-    static String shareName;
-    static int noOfShare;
-    static int sharePrice;
-    static LinkedList<Stock> myLinkedList = new LinkedList<Stock>();
-    static int[] price = new int[10];
+	static LinkedList<Stock> myLinkedList = new LinkedList<Stock>();
+	static Account account = new Account();
+    static int value=1000;
+
     public static void main(String[] args) {
-        getData();
-        totalValueOfStocks();
-    }
-	private static void totalValueOfStocks() {
-		// TODO Auto-generated method stub
-		int sumOfShares=0;
-        for(int i = 0; i< noOfStocks;i++) {
-            sumOfShares= sumOfShares + price[i];
-
-        }
-        System.out.println("Total Share Price: "+sumOfShares);
-
-	}
-	private static void getData() {
-		// TODO Auto-generated method stub
-		int noOfData;
-        int i=0;
-        Scanner sc= new Scanner(System.in);
-        System.out.println("How many data you want to enter");
-        noOfStocks = sc.nextInt();
-        noOfData=noOfStocks;
-        while(noOfData > 0) {
-            System.out.println("Enter stock name:");
-            shareName  = sc.next();
-            System.out.println("Enter number of shares:");
-            noOfShare  = sc.nextInt();
-            System.out.println("Enter each individual share price:");
-            sharePrice  = sc.nextInt();
-            myLinkedList.add( new Stock(shareName,noOfShare,sharePrice));
-            price[i++]=sharePrice*noOfShare;
-            noOfData--;
-        }
-        System.out.println("Linked list:"+myLinkedList);
-        
-        for(int j=0;j< myLinkedList.size();j++) {
-        	System.out.println(myLinkedList.get(j));
-        }
-    }
+        boolean label = true;
+        while(label == true){
+	        int balance= value;
+	        System.out.println("Enter your choice");
+	        System.out.println("1)To print report 2)To buy share 3)Total value of All companies share 4)Total value particular companies share");
+	        Scanner sc = new Scanner(System.in);
+	        int choice = sc.nextInt();
+	        switch (choice) {
+	          case 1:
+	              account.printReport();
+	              break;
+	          case 2:
+	              account.debit(balance);
+	              break;
+	          case 3:
+	                account.totalValueOfStock();
+	                break;
+	          case 4:
+	                account.valOfStock();
+	          default:
+	                System.out.println("enter valid choice");
+	      }
+      System.out.println("Enter 1 to continue");
+      int a = sc.nextInt();
+      if(a == 1){
+          label=true;
+      }
+      else{
+          label=false;
+      }
+      }
+  }
     
 }
